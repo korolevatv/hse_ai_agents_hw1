@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Трекер учебных задач</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <p class="eyebrow">ПЛАН НА НЕДЕЛЮ</p>
+      <h1>Мои учебные задачи</h1>
+      <p class="subtitle">Отслеживай время и отмечай выполненное</p>
+    </header>
+
+    <section class="stats" aria-label="Общий прогресс">
+      <article class="stat-card">
+        <span class="stat-label">Всего часов</span>
+        <strong id="total-hours">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Выполнено часов</span>
+        <strong id="done-hours">0</strong>
+      </article>
+      <article class="stat-card progress-card">
+        <span class="stat-label">Прогресс</span>
+        <strong id="progress">0%</strong>
+        <div class="progress-track">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="form-card">
+      <h2>Добавить задачу</h2>
+      <form id="task-form" novalidate>
+        <div class="field">
+          <label for="task-title">Название задачи</label>
+          <input id="task-title" name="title" type="text"
+                 placeholder="Например, лекция по математике">
+          <span id="title-error" class="error" aria-live="polite"></span>
+        </div>
+
+        <div class="field">
+          <label for="task-hours">Часы (от 0.5 до 24)</label>
+          <input id="task-hours" name="hours" type="number"
+                 min="0.5" max="24" step="0.5" placeholder="2">
+          <span id="hours-error" class="error" aria-live="polite"></span>
+        </div>
+
+        <button class="primary-button" type="submit">Добавить задачу</button>
+      </form>
+    </section>
+
+    <section class="tasks-section">
+      <div class="tasks-heading">
+        <h2>Список задач</h2>
+        <label class="filter-label" for="task-filter">Показать:
+          <select id="task-filter">
+            <option value="all">Все</option>
+            <option value="active">Активные</option>
+            <option value="completed">Выполненные</option>
+          </select>
+        </label>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-message" class="empty-message" hidden>Задач пока нет.</p>
+    </section>
+  </main>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

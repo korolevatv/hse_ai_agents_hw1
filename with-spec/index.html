@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мини-трекер учебных задач</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Мини-трекер учебных задач</h1>
+
+      <section class="panel" aria-labelledby="add-task-title">
+        <h2 id="add-task-title">Добавить задачу</h2>
+        <form id="task-form" novalidate>
+          <div class="field">
+            <label for="title-input">Название задачи</label>
+            <input id="title-input" name="title" type="text" autocomplete="off" />
+            <p id="title-error" class="error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="hours-input">Часы (0.5–24, шаг 0.5)</label>
+            <input id="hours-input" name="hours" type="number" min="0.5" max="24" step="0.5" inputmode="decimal" />
+            <p id="hours-error" class="error" aria-live="polite"></p>
+          </div>
+          <button type="submit" id="add-btn">Добавить задачу</button>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="filters-title">
+        <h2 id="filters-title">Фильтр</h2>
+        <div class="filters" role="group" aria-label="Фильтр задач">
+          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">Все</button>
+          <button type="button" class="filter-btn" data-filter="active" aria-pressed="false">Активные</button>
+          <button type="button" class="filter-btn" data-filter="done" aria-pressed="false">Выполненные</button>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="totals-title">
+        <h2 id="totals-title">Итоги</h2>
+        <div class="totals" aria-live="polite">
+          <p>Всего: <strong id="total-hours">0</strong> ч</p>
+          <p>Выполнено: <strong id="done-hours">0</strong> ч</p>
+          <p>Прогресс: <strong id="progress">0%</strong></p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="tasks-title">
+        <h2 id="tasks-title">Список задач</h2>
+        <ul id="task-list" class="task-list"></ul>
+        <p id="empty-state" class="empty" hidden>Задач нет</p>
+      </section>
+    </main>
+
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>
